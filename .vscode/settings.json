@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "deno.enablePaths": ["supabase/functions"],
+  "files.eol": "\n",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}

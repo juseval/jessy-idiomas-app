@@ -1,0 +1,36 @@
+# Configuración mínima de Supabase CLI para desarrollo local.
+# Ver README → "Base de datos local".
+project_id = "jessy-idiomas-app"
+
+[api]
+port = 54321
+schemas = ["public"]
+
+[db]
+port = 54322
+major_version = 16
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+port = 54323
+
+[auth]
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173"]
+# Nadie se registra solo: el director crea las cuentas (Edge Function admin-users).
+enable_signup = false
+
+[auth.email]
+enable_signup = false
+enable_confirmations = false
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true
+
+# activate-account se llama sin sesión iniciada.
+[functions.activate-account]
+verify_jwt = false
