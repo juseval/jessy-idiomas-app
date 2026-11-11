@@ -11,4 +11,6 @@ function required(name: string, value: string | undefined): string {
 export const env = {
   supabaseUrl: required('VITE_SUPABASE_URL', import.meta.env.VITE_SUPABASE_URL),
   supabaseAnonKey: required('VITE_SUPABASE_ANON_KEY', import.meta.env.VITE_SUPABASE_ANON_KEY),
+  /** Modo demo: entra por rol sin base de datos. Solo para desarrollo, nunca en producción. */
+  demoMode: import.meta.env.DEV && import.meta.env.VITE_DEMO_MODE === 'true',
 }

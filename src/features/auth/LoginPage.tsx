@@ -4,11 +4,17 @@ import { Button } from '@/components/ui/Button'
 import { DocumentInput } from '@/components/ui/DocumentInput'
 import { TextInput } from '@/components/ui/TextInput'
 import { isValidDocument } from '@/lib/document'
-import { HOME_BY_ROLE } from '@/lib/types'
+import { HOME_BY_ROLE, type Role } from '@/lib/types'
 import { useAuth } from './auth-context'
 
+const DEMO_ROLES: [Role, string][] = [
+  ['master', 'Director'],
+  ['teacher', 'Profesor'],
+  ['student', 'Estudiante'],
+]
+
 export function LoginPage() {
-  const { signIn, session, profile } = useAuth()
+  const { signIn, signInAsDemo, session, profile } = useAuth()
   const [document, setDocument] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -36,7 +42,9 @@ export function LoginPage() {
   return (
     <main className="flex min-h-screen flex-col bg-surface">
       <div className="flex flex-col items-center gap-3 border-b-4 border-accent bg-ink px-6 pb-20 pt-12 text-center">
-        <img src="/favicon.svg" alt="" className="h-24 w-24" />
+        <Link to="/" aria-label="Volver al inicio">
+          <img src="/favicon.svg" alt="" className="h-24 w-24" />
+        </Link>
         <p className="font-display text-xl font-extrabold tracking-wide text-white">JESSY IDIOMAS</p>
         <p className="text-sm text-slate-300">Practica lo que ves en clase, cuando quieras</p>
       </div>
@@ -74,6 +82,20 @@ export function LoginPage() {
           ¿Olvidaste tu contraseña? Pídele a la academia que la restablezca.
         </p>
       </form>
+
+      {signInAsDemo && (
+        <div className="mx-5 mt-8 flex max-w-md flex-col gap-3 self-center rounded-2xl border-2 border-dashed border-warn bg-warn-soft p-4 sm:w-full">
+          <span className="font-bold text-warn">Modo demo · solo desarrollo</span>
+          <span className="text-sm">Entra sin base de datos para ver las pantallas de cada rol.</span>
+          <div className="grid grid-cols-3 gap-2">
+            {DEMO_ROLES.map(([role, label]) => (
+              <Button key={role} type="button" variant="secondary" onClick={() => signInAsDemo(role)}>
+                {label}
+              </Button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="mx-5 my-8 flex max-w-md flex-col gap-1 self-center rounded-2xl bg-brand-soft p-4 sm:w-full">
         <span className="font-bold text-brand-dark">¿Primera vez?</span>
