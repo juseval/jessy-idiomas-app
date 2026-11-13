@@ -19,6 +19,7 @@ const LEVELS = [
   { code: 'A2', name: 'Básico', text: 'Pasado, planes y conversaciones cortas con seguridad.' },
   { code: 'B1', name: 'Intermedio', text: 'Opiniones, experiencias y textos más largos.' },
   { code: 'B2', name: 'Intermedio alto', text: 'Fluidez, matices y conversaciones naturales.' },
+  { code: 'C1', name: 'Avanzado', text: 'Inglés con soltura para estudiar, trabajar y viajar.' },
 ]
 
 const STEPS = [
@@ -134,9 +135,9 @@ export function HomePage() {
       {/* Ruta de niveles */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-center font-display text-3xl font-extrabold">Tu ruta, de A1 a B2</h2>
+          <h2 className="text-center font-display text-3xl font-extrabold">Tu ruta, de A1 a C1</h2>
           <p className="mt-2 text-center text-muted">Avanzas tema por tema, en el orden que tiene sentido.</p>
-          <ol className="relative mt-12 grid gap-6 md:grid-cols-4">
+          <ol className="relative mt-12 grid gap-6 md:grid-cols-5">
             <div className="absolute left-0 right-0 top-7 hidden h-1 overflow-hidden rounded bg-line md:block">
               <div className="h-full w-1/3 animate-path rounded bg-gradient-to-r from-brand to-accent" />
             </div>

@@ -7,7 +7,7 @@ const links = [
   { to: '/director/grupos', label: 'Grupos y profesores' },
   { to: '/director/planificacion', label: 'Planificación semanal' },
   { to: '/director/pagos', label: 'Pagos' },
-  { to: '/director/curriculo', label: 'Currículo A1–B2' },
+  { to: '/director/curriculo', label: 'Currículo A1–C1' },
   { to: '/director/reportes', label: 'Reportes' },
 ]
 

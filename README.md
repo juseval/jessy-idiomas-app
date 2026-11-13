@@ -42,7 +42,7 @@ src/
 supabase/
   migrations/     cambios de la base de datos, en orden (nunca se editan, se agregan)
   functions/      Edge Functions (crear usuarios, activar cuentas)
-  seed.sql        datos base (niveles A1–B2)
+  seed.sql        datos base (niveles A1–C1)
   tests/          prueba de las políticas de seguridad (RLS)
 ```
 
