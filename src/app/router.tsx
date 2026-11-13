@@ -1,7 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { Navigate, createBrowserRouter } from 'react-router-dom'
+import { HomePage } from '@/features/home/HomePage'
 import { LoginPage } from '@/features/auth/LoginPage'
 import { ActivatePage } from '@/features/auth/ActivatePage'
-import { RequireRole, RoleHomeRedirect } from '@/features/auth/RequireRole'
+import { RequireRole } from '@/features/auth/RequireRole'
 import { Placeholder } from '@/components/ui/Placeholder'
 import { DirectorLayout } from './layouts/DirectorLayout'
 import { TeacherLayout } from './layouts/TeacherLayout'
@@ -9,7 +10,7 @@ import { StudentLayout } from './layouts/StudentLayout'
 
 // Cada Placeholder indica la tarjeta de Trello que lo reemplaza.
 export const router = createBrowserRouter([
-  { path: '/', element: <RoleHomeRedirect /> },
+  { path: '/', element: <HomePage /> },
   { path: '/login', element: <LoginPage /> },
   { path: '/activar', element: <ActivatePage /> },
   {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
       { path: 'grupos', element: <Placeholder title="Grupos y profesores" card="3.2 / 3.3" /> },
       { path: 'planificacion', element: <Placeholder title="Planificación semanal" card="5.1" /> },
       { path: 'pagos', element: <Placeholder title="Pagos" card="3.4" /> },
-      { path: 'curriculo', element: <Placeholder title="Currículo A1–B2" card="4.1" /> },
+      { path: 'curriculo', element: <Placeholder title="Currículo A1–C1" card="4.1" /> },
       { path: 'reportes', element: <Placeholder title="Reportes" card="7.2" /> },
     ],
   },
@@ -51,5 +52,5 @@ export const router = createBrowserRouter([
       { path: 'perfil', element: <Placeholder title="Perfil" card="6.3" /> },
     ],
   },
-  { path: '*', element: <RoleHomeRedirect /> },
+  { path: '*', element: <Navigate to="/" replace /> },
 ])
