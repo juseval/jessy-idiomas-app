@@ -209,6 +209,44 @@ function HeroVideo({ className }: { className: string }) {
   )
 }
 
+/** Botón flotante para volver arriba. Aparece al bajar y desaparece al volver al inicio. */
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <button
+      type="button"
+      aria-label="Subir al inicio"
+      tabIndex={visible ? 0 : -1}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className={`cursor-pointer fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-accent text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+        visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
+      }`}
+    >
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m18 15-6-6-6 6" />
+      </svg>
+    </button>
+  )
+}
+
 export function HomePage() {
   const { session, profile } = useAuth()
   const [activeLevel, setActiveLevel] = useState(3)
@@ -522,6 +560,8 @@ export function HomePage() {
           © {new Date().getFullYear()} Jessy Idiomas · Medellín
         </div>
       </footer>
+
+      <ScrollToTop  />
     </main>
   )
 }
